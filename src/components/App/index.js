@@ -3,6 +3,7 @@ import React from "react";
 import TableView from "../TableView";
 import { Wrapper } from "./styles";
 import { useStore } from "../../store";
+import LineChartView from "../LineChartView";
 
 function App() {
   const { page, isLoading, maxPage, dispatch } = useStore();
@@ -27,6 +28,7 @@ function App() {
           next
         </button>
       </div>
+      <LineChartView />
     </Wrapper>
   );
 }

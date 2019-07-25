@@ -5,7 +5,7 @@ const Context = (contextType = React.createContext());
 
 const initialState = {
   isLoading: false,
-  results: null,
+  results: [],
   page: 1,
   maxPage: 0
 };
