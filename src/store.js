@@ -53,10 +53,22 @@ function Provider({ children }) {
 
       try {
         const url = `https://swapi.co/api/people/?page=${state.page}`;
-        const getData = await fetch(url);
-        const jsonData = await getData.json();
+        const keyLocalData = `local-data-${url}`;
 
-        dispatch({ type: "setData", ...jsonData });
+        const getLocalData = localStorage.getItem(keyLocalData);
+
+        if (getLocalData) {
+          const parseData = JSON.parse(getLocalData);
+          dispatch({ type: "setData", ...parseData });
+        } else {
+          const fetchApi = await fetch(url);
+          const jsonData = await fetchApi.json();
+
+          const stringifyData = JSON.stringify(jsonData);
+          localStorage.setItem(keyLocalData, stringifyData);
+
+          dispatch({ type: "setData", ...jsonData });
+        }
       } catch (error) {
         throw new Error(error);
       }
