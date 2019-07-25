@@ -5,7 +5,6 @@ import { useStore } from "../../store";
 
 function LineChartView() {
   const { results } = useStore();
-
   const datas = results.map(item => {
     return {
       name: item.name,
