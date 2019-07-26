@@ -1,34 +1,37 @@
 import React from "react";
+import { Button } from "@qlue-ui/react-component/dist/Button";
 
 import TableView from "../TableView";
-import { Wrapper } from "./styles";
+import { Wrapper, ActionWrapper } from "./styles";
 import { useStore } from "../../store";
 import LineChartView from "../LineChartView";
 
 function App() {
   const { page, isLoading, maxPage, dispatch } = useStore();
 
-  function handleNext() {
-    dispatch({ type: "nextData" });
-  }
-
-  function handlePrev() {
-    dispatch({ type: "prevData" });
-  }
-
   return (
     <Wrapper>
-      <TableView />
-      <div>
-        <button disabled={isLoading || page === 1} onClick={handlePrev}>
-          prev
-        </button>
-        <div>Page: {page}</div>
-        <button disabled={isLoading || maxPage === page} onClick={handleNext}>
-          next
-        </button>
-      </div>
-      <LineChartView />
+      {isLoading ? <h3>Loading...</h3> : <TableView />}
+      <ActionWrapper>
+        <Button
+          size="small"
+          disabled={isLoading || page === 1}
+          onClick={() => dispatch({ type: "prevData" })}
+        >
+          PREV
+        </Button>
+        <b>
+          Page: <i>{page}</i>
+        </b>
+        <Button
+          size="small"
+          disabled={isLoading || maxPage === page}
+          onClick={() => dispatch({ type: "nextData" })}
+        >
+          NEXT
+        </Button>
+      </ActionWrapper>
+      {isLoading ? <h3>Loading...</h3> : <LineChartView />}
     </Wrapper>
   );
 }

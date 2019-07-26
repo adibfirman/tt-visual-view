@@ -2,6 +2,7 @@ import React from "react";
 import { Graph } from "@qlue-ui/react-component/dist/Graph";
 
 import { useStore } from "../../store";
+import { Wrapper } from "./styles";
 
 function LineChartView() {
   const { results } = useStore();
@@ -14,14 +15,14 @@ function LineChartView() {
   });
 
   return (
-    <React.Fragment>
+    <Wrapper>
       <Graph
-        width="95%"
+        width="99%"
         height={300}
         data={datas}
         chart={{ LINE: [{ dataKey: "height" }, { dataKey: "mass" }] }}
       />
-    </React.Fragment>
+    </Wrapper>
   );
 }
 

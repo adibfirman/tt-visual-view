@@ -54,7 +54,6 @@ function Provider({ children }) {
       try {
         const url = `https://swapi.co/api/people/?page=${state.page}`;
         const keyLocalData = `local-data-${url}`;
-
         const getLocalData = localStorage.getItem(keyLocalData);
 
         if (getLocalData) {

@@ -1,14 +1,16 @@
 import React from "react";
 
 import { useStore } from "../../store";
+import { Table } from "./styles";
 
 function TableView() {
   const { results } = useStore();
 
   return (
-    <table>
+    <Table>
       <thead>
         <tr>
+          <th>#</th>
           <th>Name</th>
           <th>Height</th>
           <th>Mass</th>
@@ -19,6 +21,7 @@ function TableView() {
       <tbody>
         {results.map((item, i) => (
           <tr key={i}>
+            <td>{i}</td>
             <td>{item.name}</td>
             <td>{item.height}</td>
             <td>{item.mass}</td>
@@ -27,7 +30,7 @@ function TableView() {
           </tr>
         ))}
       </tbody>
-    </table>
+    </Table>
   );
 }
 
