@@ -8,9 +8,8 @@ function TableView() {
 
   return (
     <Table>
-      <thead>
+      <thead style={{ background: "#9e9e9e5e" }}>
         <tr>
-          <th>#</th>
           <th>Name</th>
           <th>Height</th>
           <th>Mass</th>
@@ -21,7 +20,6 @@ function TableView() {
       <tbody>
         {results.map((item, i) => (
           <tr key={i}>
-            <td>{i}</td>
             <td>{item.name}</td>
             <td>{item.height}</td>
             <td>{item.mass}</td>

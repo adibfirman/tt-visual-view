@@ -17,7 +17,7 @@ function LineChartView() {
   return (
     <Wrapper>
       <Graph
-        width="99%"
+        width="95%"
         height={300}
         data={datas}
         chart={{ LINE: [{ dataKey: "height" }, { dataKey: "mass" }] }}
